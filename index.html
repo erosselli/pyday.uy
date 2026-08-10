@@ -5,6 +5,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PyDay Uruguay — 10 de octubre, LATU</title>
+  <script>
+    (function () {
+      var saved = localStorage.getItem('pyday-theme');
+      if (saved === 'dark' || saved === 'light') {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    })();
+  </script>
   <script type="importmap">
 {
   "imports": {
@@ -180,6 +188,33 @@
       width: 26px;
       height: 26px;
       display: block;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 34px;
+      border: 1px solid var(--line-strong);
+      border-radius: 3px;
+      background: transparent;
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--blue);
+      color: var(--blue);
     }
 
     nav a.cfp-link {
@@ -571,10 +606,45 @@
         src="assets/logo.png" alt="PyDay UY Logo" />
       <span>pyday<span style="color:var(--ink-soft)">.uy</span></span>
     </div>
-    <a class="cfp-link mono"
-      href="https://docs.google.com/forms/d/e/1FAIpQLSfcn9E5Ts5lrqaylruZDrWQUb-33slaEt0W0gZzTvxEblPdQA/viewform"
-      target="_blank" rel="noopener">Enviar charla →</a>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-toggle mono" type="button" aria-label="Cambiar tema"></button>
+      <a class="cfp-link mono"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSfcn9E5Ts5lrqaylruZDrWQUb-33slaEt0W0gZzTvxEblPdQA/viewform"
+        target="_blank" rel="noopener">Enviar charla →</a>
+    </div>
   </nav>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle');
+      if (!btn) return;
+      var STORAGE_KEY = 'pyday-theme';
+
+      function systemTheme() {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      function effectiveTheme() {
+        return root.getAttribute('data-theme') || systemTheme();
+      }
+
+      function updateButton() {
+        var theme = effectiveTheme();
+        btn.textContent = theme === 'dark' ? '☀' : '☾';
+        btn.setAttribute('aria-label', theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+      }
+
+      updateButton();
+
+      btn.addEventListener('click', function () {
+        var next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem(STORAGE_KEY, next);
+        updateButton();
+      });
+    })();
+  </script>
 
   <header class="hero">
     <div id="hero-fallback" aria-hidden="true"></div>

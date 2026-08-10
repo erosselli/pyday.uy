@@ -5,6 +5,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PyDay Uruguay — 10 de octubre, LATU</title>
+  <script>
+    (function () {
+      var saved = localStorage.getItem('pyday-theme');
+      if (saved === 'dark' || saved === 'light') {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    })();
+  </script>
   <script type="importmap">
 {
   "imports": {
@@ -47,42 +55,6 @@
     }
 
     :root {
-      --bg: #faf6ec;
-      --bg-raised: #f3ecdc;
-      --ink: #1b1c20;
-      --ink-soft: #55564f;
-      --line: #ddd2b7;
-      --line-strong: #c7b992;
-      --gold: #c8891a;
-      --gold-bright: #e8ae29;
-      --blue: #1b4f9c;
-      --blue-deep: #123a76;
-      --snake-body: rgba(27, 79, 156, 0.5);
-      --snake-food: rgba(200, 137, 26, 0.75);
-      --snake-grid: rgba(27, 28, 32, 0.05);
-      --focus: #1b4f9c;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0c1220;
-        --bg-raised: #121a2c;
-        --ink: #f2ede0;
-        --ink-soft: #a8adbb;
-        --line: #263354;
-        --line-strong: #33447a;
-        --gold: #f2c14e;
-        --gold-bright: #f7d374;
-        --blue: #6f9ceb;
-        --blue-deep: #a9c4f5;
-        --snake-body: rgba(111, 156, 235, 0.35);
-        --snake-food: rgba(242, 193, 78, 0.6);
-        --snake-grid: rgba(242, 237, 224, 0.05);
-        --focus: #f2c14e;
-      }
-    }
-
-    :root[data-theme="dark"] {
       --bg: #0c1220;
       --bg-raised: #121a2c;
       --ink: #f2ede0;
@@ -180,6 +152,63 @@
       width: 26px;
       height: 26px;
       display: block;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .theme-toggle {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      width: 60px;
+      height: 32px;
+      border: 1px solid var(--line-strong);
+      border-radius: 20px;
+      background: var(--bg-raised);
+      cursor: pointer;
+      padding: 0;
+      flex-shrink: 0;
+      transition: border-color 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--blue);
+    }
+
+    .theme-toggle .track-icon {
+      position: relative;
+      z-index: 0;
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .theme-toggle .icon-sun { color: var(--gold); }
+    .theme-toggle .icon-moon { color: var(--blue); }
+
+    .theme-toggle .thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background 0.25s ease;
+    }
+
+    .theme-toggle.is-dark .thumb {
+      transform: translateX(28px);
+      background: var(--blue);
     }
 
     nav a.cfp-link {
@@ -470,9 +499,9 @@
     /* ---------- team ---------- */
 
     .team-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px 40px;
       margin: 28px 0 0;
       padding: 0;
       list-style: none;
@@ -491,6 +520,16 @@
       content: "›";
       color: var(--gold);
       font-weight: 700;
+    }
+
+    .team-list a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .team-list a:hover {
+      color: var(--blue);
+      text-decoration: underline;
     }
 
     /* ---------- footer ---------- */
@@ -536,6 +575,10 @@
         padding-top: 32px;
       }
 
+      .team-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .meta-row {
         flex-wrap: wrap;
         white-space: normal;
@@ -571,10 +614,47 @@
         src="assets/logo.png" alt="PyDay UY Logo" />
       <span>pyday<span style="color:var(--ink-soft)">.uy</span></span>
     </div>
-    <a class="cfp-link mono"
-      href="https://docs.google.com/forms/d/e/1FAIpQLSfcn9E5Ts5lrqaylruZDrWQUb-33slaEt0W0gZzTvxEblPdQA/viewform"
-      target="_blank" rel="noopener">Enviar charla →</a>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Cambiar tema">
+        <span class="track-icon icon-sun" aria-hidden="true">☀</span>
+        <span class="track-icon icon-moon" aria-hidden="true">☾</span>
+        <span class="thumb"></span>
+      </button>
+      <a class="cfp-link mono"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSfcn9E5Ts5lrqaylruZDrWQUb-33slaEt0W0gZzTvxEblPdQA/viewform"
+        target="_blank" rel="noopener">Enviar charla →</a>
+    </div>
   </nav>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle');
+      if (!btn) return;
+      var STORAGE_KEY = 'pyday-theme';
+
+      function effectiveTheme() {
+        return root.getAttribute('data-theme') || 'dark';
+      }
+
+      function updateButton() {
+        var theme = effectiveTheme();
+        var isDark = theme === 'dark';
+        btn.classList.toggle('is-dark', isDark);
+        btn.setAttribute('aria-checked', isDark ? 'true' : 'false');
+        btn.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+      }
+
+      updateButton();
+
+      btn.addEventListener('click', function () {
+        var next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem(STORAGE_KEY, next);
+        updateButton();
+      });
+    })();
+  </script>
 
   <header class="hero">
     <div id="hero-fallback" aria-hidden="true"></div>
@@ -599,7 +679,7 @@
   <section id="about">
     <div class="wrap">
       <div class="section-head">
-        <h2>¿Qué es el PyDay?</h2>
+        <h2>about.py</h2>
       </div>
       <div class="about-grid">
         <div>
@@ -623,7 +703,7 @@
   <section id="cfp">
     <div class="wrap">
       <div class="section-head">
-        <h2>Call for Proposals</h2>
+        <h2>cfp.py</h2>
       </div>
       <p class="lede">Buscamos oradoras y oradores para compartir charlas y talleres. No hace falta ser experta ni haber
         dado charlas antes — el PyDay es también un buen primer escenario.</p>
@@ -641,16 +721,16 @@
   <section id="team">
     <div class="wrap">
       <div class="section-head">
-        <h2>Organizadores</h2>
+        <h2>organizers.py</h2>
       </div>
       <p class="lede">El equipo detrás del PyDay Uruguay.</p>
       <ul class="team-list">
-        <li>Eliana Rosselli</li>
-        <li>Javier Valenzani</li>
-        <li>Alison Alvez</li>
-        <li>Gabriela Golmar</li>
-        <li>Enrique Sadi</li>
-        <li>Ana Carnales</li>
+        <li><a href="https://www.linkedin.com/in/eliana-rosselli/" target="_blank" rel="noopener">Eliana Rosselli</a></li>
+        <li><a href="https://www.linkedin.com/in/jvalenzani/" target="_blank" rel="noopener">Javier Valenzani</a></li>
+        <li><a href="https://www.linkedin.com/in/alisonalvezz/" target="_blank" rel="noopener">Alison Alvez</a></li>
+        <li><a href="https://www.linkedin.com/in/gabriela-golmar-674a28192/" target="_blank" rel="noopener">Gabriela Golmar</a></li>
+        <li><a href="https://www.linkedin.com/in/esadi/" target="_blank" rel="noopener">Enrique Sadi</a></li>
+        <li><a href="https://www.linkedin.com/in/ana-carnales-7b3b12334/" target="_blank" rel="noopener">Ana Carnales</a></li>
       </ul>
     </div>
   </section>
@@ -912,7 +992,6 @@
       }
 
       window.addEventListener('resize', resize);
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateColors);
       new MutationObserver(updateColors).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
       resize();

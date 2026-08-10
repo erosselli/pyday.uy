@@ -197,24 +197,54 @@
     }
 
     .theme-toggle {
+      position: relative;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 34px;
+      width: 60px;
+      height: 32px;
       border: 1px solid var(--line-strong);
-      border-radius: 3px;
-      background: transparent;
-      color: var(--ink-soft);
-      font-size: 15px;
-      line-height: 1;
+      border-radius: 20px;
+      background: var(--bg-raised);
       cursor: pointer;
       padding: 0;
+      flex-shrink: 0;
+      transition: border-color 0.2s ease;
     }
 
     .theme-toggle:hover {
       border-color: var(--blue);
-      color: var(--blue);
+    }
+
+    .theme-toggle .track-icon {
+      position: relative;
+      z-index: 0;
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .theme-toggle .icon-sun { color: var(--gold); }
+    .theme-toggle .icon-moon { color: var(--blue); }
+
+    .theme-toggle .thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background 0.25s ease;
+    }
+
+    .theme-toggle.is-dark .thumb {
+      transform: translateX(28px);
+      background: var(--blue);
     }
 
     nav a.cfp-link {
@@ -607,7 +637,11 @@
       <span>pyday<span style="color:var(--ink-soft)">.uy</span></span>
     </div>
     <div class="nav-actions">
-      <button id="theme-toggle" class="theme-toggle mono" type="button" aria-label="Cambiar tema"></button>
+      <button id="theme-toggle" class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Cambiar tema">
+        <span class="track-icon icon-sun" aria-hidden="true">☀</span>
+        <span class="track-icon icon-moon" aria-hidden="true">☾</span>
+        <span class="thumb"></span>
+      </button>
       <a class="cfp-link mono"
         href="https://docs.google.com/forms/d/e/1FAIpQLSfcn9E5Ts5lrqaylruZDrWQUb-33slaEt0W0gZzTvxEblPdQA/viewform"
         target="_blank" rel="noopener">Enviar charla →</a>
@@ -631,8 +665,10 @@
 
       function updateButton() {
         var theme = effectiveTheme();
-        btn.textContent = theme === 'dark' ? '☀' : '☾';
-        btn.setAttribute('aria-label', theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+        var isDark = theme === 'dark';
+        btn.classList.toggle('is-dark', isDark);
+        btn.setAttribute('aria-checked', isDark ? 'true' : 'false');
+        btn.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
       }
 
       updateButton();

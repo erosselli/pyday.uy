@@ -55,42 +55,6 @@
     }
 
     :root {
-      --bg: #faf6ec;
-      --bg-raised: #f3ecdc;
-      --ink: #1b1c20;
-      --ink-soft: #55564f;
-      --line: #ddd2b7;
-      --line-strong: #c7b992;
-      --gold: #c8891a;
-      --gold-bright: #e8ae29;
-      --blue: #1b4f9c;
-      --blue-deep: #123a76;
-      --snake-body: rgba(27, 79, 156, 0.5);
-      --snake-food: rgba(200, 137, 26, 0.75);
-      --snake-grid: rgba(27, 28, 32, 0.05);
-      --focus: #1b4f9c;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0c1220;
-        --bg-raised: #121a2c;
-        --ink: #f2ede0;
-        --ink-soft: #a8adbb;
-        --line: #263354;
-        --line-strong: #33447a;
-        --gold: #f2c14e;
-        --gold-bright: #f7d374;
-        --blue: #6f9ceb;
-        --blue-deep: #a9c4f5;
-        --snake-body: rgba(111, 156, 235, 0.35);
-        --snake-food: rgba(242, 193, 78, 0.6);
-        --snake-grid: rgba(242, 237, 224, 0.05);
-        --focus: #f2c14e;
-      }
-    }
-
-    :root[data-theme="dark"] {
       --bg: #0c1220;
       --bg-raised: #121a2c;
       --ink: #f2ede0;
@@ -669,12 +633,8 @@
       if (!btn) return;
       var STORAGE_KEY = 'pyday-theme';
 
-      function systemTheme() {
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      }
-
       function effectiveTheme() {
-        return root.getAttribute('data-theme') || systemTheme();
+        return root.getAttribute('data-theme') || 'dark';
       }
 
       function updateButton() {
@@ -719,7 +679,7 @@
   <section id="about">
     <div class="wrap">
       <div class="section-head">
-        <h2>¿Qué es el PyDay?</h2>
+        <h2>about.py</h2>
       </div>
       <div class="about-grid">
         <div>
@@ -743,7 +703,7 @@
   <section id="cfp">
     <div class="wrap">
       <div class="section-head">
-        <h2>Call for Proposals</h2>
+        <h2>cfp.py</h2>
       </div>
       <p class="lede">Buscamos oradoras y oradores para compartir charlas y talleres. No hace falta ser experta ni haber
         dado charlas antes — el PyDay es también un buen primer escenario.</p>
@@ -761,7 +721,7 @@
   <section id="team">
     <div class="wrap">
       <div class="section-head">
-        <h2>Organizadores</h2>
+        <h2>organizers.py</h2>
       </div>
       <p class="lede">El equipo detrás del PyDay Uruguay.</p>
       <ul class="team-list">
@@ -1032,7 +992,6 @@
       }
 
       window.addEventListener('resize', resize);
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateColors);
       new MutationObserver(updateColors).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
       resize();

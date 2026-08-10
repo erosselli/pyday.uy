@@ -5,6 +5,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PyDay Uruguay — 10 de octubre, LATU</title>
+  <link rel="icon" type="image/x-icon" href="assets/logo.png">
+
   <script>
     (function () {
       var saved = localStorage.getItem('pyday-theme');
@@ -191,8 +193,13 @@
       pointer-events: none;
     }
 
-    .theme-toggle .icon-sun { color: var(--gold); }
-    .theme-toggle .icon-moon { color: var(--blue); }
+    .theme-toggle .icon-sun {
+      color: var(--gold);
+    }
+
+    .theme-toggle .icon-moon {
+      color: var(--blue);
+    }
 
     .theme-toggle .thumb {
       position: absolute;
@@ -610,12 +617,12 @@
 
   <nav class="wrap">
     <div class="brand">
-      <img
-        src="assets/logo.png" alt="PyDay UY Logo" />
+      <img src="assets/logo.png" alt="PyDay UY Logo" />
       <span>pyday<span style="color:var(--ink-soft)">.uy</span></span>
     </div>
     <div class="nav-actions">
-      <button id="theme-toggle" class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Cambiar tema">
+      <button id="theme-toggle" class="theme-toggle" type="button" role="switch" aria-checked="false"
+        aria-label="Cambiar tema">
         <span class="track-icon icon-sun" aria-hidden="true">☀</span>
         <span class="track-icon icon-moon" aria-hidden="true">☾</span>
         <span class="thumb"></span>
@@ -683,20 +690,18 @@
       </div>
       <div class="about-grid">
         <div>
-          <p class="lede">PyDay es un evento organizado por la comunidad de Python donde, junto con comunidades amigas,
+          <p class="lede">PyDay UY es un evento organizado por la comunidad de Python Uruguay donde, junto con
+            comunidades amigas,
             compartimos charlas, experiencias y conocimiento. Nuestro objetivo es reunir a la comunidad local de Python
             y generar un espacio de encuentro, aprendizaje e intercambio.</p>
           <p class="lede">PyDay UY 2026 es la primera edición de un PyDay en Uruguay, siguiendo la iniciativa de otros
             países de la región y del mundo.</p>
         </div>
-        <div class="col-secondary">
-          <p class="col-label">Python Uruguay</p>
-          <p class="lede">Python Uruguay es una comunidad dedicada al aprendizaje, uso y difusión del lenguaje de
-            programación Python. Con más de 1.000 miembros, mantiene una actividad sostenida a través de encuentros
-            mensuales que reúnen a personas interesadas en tecnología, desarrollo de software, inteligencia artificial y
-            ciencia de datos.</p>
+        <div>
+          <img height="275px" src="assets/logo.png" alt="Python Uruguay Logo">
         </div>
       </div>
+    </div>
     </div>
   </section>
 
@@ -725,12 +730,15 @@
       </div>
       <p class="lede">El equipo detrás del PyDay Uruguay.</p>
       <ul class="team-list">
-        <li><a href="https://www.linkedin.com/in/eliana-rosselli/" target="_blank" rel="noopener">Eliana Rosselli</a></li>
+        <li><a href="https://www.linkedin.com/in/eliana-rosselli/" target="_blank" rel="noopener">Eliana Rosselli</a>
+        </li>
         <li><a href="https://www.linkedin.com/in/jvalenzani/" target="_blank" rel="noopener">Javier Valenzani</a></li>
         <li><a href="https://www.linkedin.com/in/alisonalvezz/" target="_blank" rel="noopener">Alison Alvez</a></li>
-        <li><a href="https://www.linkedin.com/in/gabriela-golmar-674a28192/" target="_blank" rel="noopener">Gabriela Golmar</a></li>
+        <li><a href="https://www.linkedin.com/in/gabriela-golmar-674a28192/" target="_blank" rel="noopener">Gabriela
+            Golmar</a></li>
         <li><a href="https://www.linkedin.com/in/esadi/" target="_blank" rel="noopener">Enrique Sadi</a></li>
-        <li><a href="https://www.linkedin.com/in/ana-carnales-7b3b12334/" target="_blank" rel="noopener">Ana Carnales</a></li>
+        <li><a href="https://www.linkedin.com/in/ana-carnales-7b3b12334/" target="_blank" rel="noopener">Ana
+            Carnales</a></li>
       </ul>
     </div>
   </section>

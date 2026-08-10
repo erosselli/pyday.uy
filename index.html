@@ -535,9 +535,9 @@
     /* ---------- team ---------- */
 
     .team-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px 40px;
       margin: 28px 0 0;
       padding: 0;
       list-style: none;
@@ -599,6 +599,10 @@
         padding-left: 0;
         border-top: 1px solid var(--line);
         padding-top: 32px;
+      }
+
+      .team-list {
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .meta-row {

@@ -565,6 +565,17 @@
       text-align: right;
     }
 
+    @media (max-width: 400px) {
+      .wordmark {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .pyday-text {
+        margin-left: 48px;
+      }
+    }
+
     @media (max-width: 720px) {
       .facts {
         grid-template-columns: 1fr;
@@ -669,8 +680,8 @@
     <div class="wrap">
       <p class="eyebrow">primera edición en uruguay</p>
       <h1 class="wordmark">
-        <span class="fn">print(</span><span class="punct">"</span><span class="py">Py</span><span
-          class="uy">Day</span><span class="punct">"</span><span class="fn">)</span>
+        <span class="fn">print(</span><span class="pyday-text"><span class="punct">"</span><span
+            class="py">Py</span><span class="uy">Day</span><span class="punct">"</span></span><span class="fn">)</span>
       </h1>
 
       <div class="meta-block">
@@ -724,6 +735,20 @@
     </div>
   </section>
 
+  <section id="sponsors">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>sponsors.py</h2>
+      </div>
+      <p class="mono">¡Estamos buscando Sponsors! Si querés apoyar a PyDay UY y sumar tu logo en esta página, rellená el
+        formulario de
+        contacto. </p>
+      <a class="cfp-cta mono"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSeu35bAtrvCkQrd-xmKUrnDsbKCSE43GsHnT6V90hvZw0gchA/viewform?usp=dialog"
+        target="_blank" rel="noopener">Quiero ser Sponsor <span class="arrow">→</span></a>
+    </div>
+  </section>
+
   <section id="team">
     <div class="wrap">
       <div class="section-head">
@@ -742,6 +767,28 @@
             Carnales</a></li>
       </ul>
     </div>
+  </section>
+
+  <section id="community">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>community.py</h2>
+      </div>
+      <p class="lede">¡Sumate a nuestras comunidades! </p>
+      <ul class="team-list community-list">
+        <li>
+          <a href="https://www.meetup.com/es-es/py-mvd/" target="_blank" rel="noopener">Python Montevideo Meetup</a>
+        </li>
+        <li>
+          <a href="https://www.meetup.com/es-es/uruguay-pyladies-meetup-group/" target="_blank" rel="noopener">PyLadies
+            Uruguay</a>
+        </li>
+        <li>
+          <a href="https://www.owu.uy" target="_blank" rel="noopener">Open Web Uruguay (OWU)</a>
+        </li>
+      </ul>
+    </div>
+
   </section>
 
   <footer>

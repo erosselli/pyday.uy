@@ -71,6 +71,10 @@
       --snake-food: rgba(242, 193, 78, 0.6);
       --snake-grid: rgba(242, 237, 224, 0.05);
       --focus: #f2c14e;
+      --sponsor-bg: transparent;
+      --sponsor-border: var(--line);
+      --sponsor-hover-border: var(--blue);
+      --sponsor-white-logo-filter: invert(0);
     }
 
     :root[data-theme="light"] {
@@ -88,6 +92,8 @@
       --snake-food: rgba(200, 137, 26, 0.75);
       --snake-grid: rgba(27, 28, 32, 0.05);
       --focus: #1b4f9c;
+      --sponsor-white-logo-filter: invert(1);
+      --sponsor-hover-border: var(--gold-bright);
     }
 
     * {
@@ -543,6 +549,39 @@
       margin-left: 32px;
     }
 
+    /* ---------- sponsors ---------- */
+
+    .sponsor-logos {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 28px 0 0;
+    }
+
+    .sponsor-logos img {
+      max-width: 200px;
+    }
+
+    .sponsor-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border-radius: 6px;
+      background: var(--sponsor-bg);
+      border: 1px solid var(--sponsor-border);
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .sponsor-logo:hover {
+      border-color: var(--sponsor-hover-border);
+    }
+
+    .white-logo {
+      filter: var(--sponsor-white-logo-filter);
+    }
+
     /* ---------- footer ---------- */
 
     footer {
@@ -695,7 +734,8 @@
       <div class="meta-block">
         <div class="meta-row"><span class="meta-key">fecha</span><span class="meta-val accent">sábado 10 de octubre,
             2026</span></div>
-        <div class="meta-row"><span class="meta-key">sede</span><span class="meta-val accent2">LATU, Montevideo</span>
+        <div class="meta-row"><span class="meta-key">sede</span><span class="meta-val accent2">auditorio del LATU,
+            Montevideo</span>
         </div>
         <div class="meta-row"><span class="meta-key">entrada</span><span class="meta-val">gratuita</span></div>
       </div>
@@ -754,6 +794,11 @@
       <a class="cfp-cta mono"
         href="https://docs.google.com/forms/d/e/1FAIpQLSeu35bAtrvCkQrd-xmKUrnDsbKCSE43GsHnT6V90hvZw0gchA/viewform?usp=dialog"
         target="_blank" rel="noopener">Quiero ser Sponsor <span class="arrow">→</span></a>
+      <div class="sponsor-logos">
+        <a class="sponsor-logo" href="https://xmartlabs.com/" target="_blank" rel="noopener">
+          <img class="white-logo" src="assets/sponsors/xmartlabs.svg" alt="Xmartlabs Logo">
+        </a>
+      </div>
     </div>
   </section>
 
@@ -784,6 +829,10 @@
       </div>
       <p class="lede">¡Sumate a nuestras comunidades! </p>
       <ul class="team-list community-list">
+        <li>
+          <a href="https://www.linkedin.com/company/python-uy/" target="_blank" rel="noopener">LinkedIn Python
+            Uruguay</a>
+        </li>
         <li>
           <a href="https://www.meetup.com/es-es/py-mvd/" target="_blank" rel="noopener">Python Montevideo Meetup</a>
         </li>

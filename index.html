@@ -70,10 +70,8 @@
       --snake-body: rgba(111, 156, 235, 0.35);
       --snake-food: rgba(242, 193, 78, 0.6);
       --snake-grid: rgba(242, 237, 224, 0.05);
-      --focus: #f2c14e;
+      --focus: var(--blue);
       --sponsor-bg: transparent;
-      --sponsor-border: var(--line);
-      --sponsor-hover-border: var(--blue);
       --sponsor-white-logo-filter: invert(0);
     }
 
@@ -93,7 +91,6 @@
       --snake-grid: rgba(27, 28, 32, 0.05);
       --focus: #1b4f9c;
       --sponsor-white-logo-filter: invert(1);
-      --sponsor-hover-border: var(--gold-bright);
     }
 
     * {
@@ -570,12 +567,15 @@
       padding: 16px 24px;
       border-radius: 6px;
       background: var(--sponsor-bg);
-      border: 1px solid var(--sponsor-border);
-      transition: background-color 0.25s ease, border-color 0.25s ease;
+      transition: transform 0.2s ease-in-out, background-color 0.25s ease;
     }
 
     .sponsor-logo:hover {
-      border-color: var(--sponsor-hover-border);
+      transform: scale(1.1);
+    }
+
+    .sponsor-logo:focus {
+      outline: 2px solid var(--blue);
     }
 
     .white-logo {

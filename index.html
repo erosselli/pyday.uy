@@ -73,6 +73,7 @@
       --focus: var(--blue);
       --sponsor-bg: transparent;
       --sponsor-white-logo-filter: invert(0);
+      --sponsor-dark-logo-filter: invert(1);
     }
 
     :root[data-theme="light"] {
@@ -91,6 +92,7 @@
       --snake-grid: rgba(27, 28, 32, 0.05);
       --focus: #1b4f9c;
       --sponsor-white-logo-filter: invert(1);
+      --sponsor-dark-logo-filter: invert(0);
     }
 
     * {
@@ -582,6 +584,10 @@
       filter: var(--sponsor-white-logo-filter);
     }
 
+    .dark-logo {
+      filter: var(--sponsor-dark-logo-filter);
+    }
+
     /* ---------- footer ---------- */
 
     footer {
@@ -803,6 +809,12 @@
         </a>
         <a class="sponsor-logo" href="https://xmartlabs.com/" target="_blank" rel="noopener">
           <img class="white-logo" src="assets/sponsors/xmartlabs.svg" alt="Xmartlabs Logo">
+        </a>
+        <a class="sponsor-logo" href="https://https://focus.uy/" target="_blank" rel="noopener">
+          <img class="white-logo" src="assets/sponsors/focus.png" alt="Focus Logo">
+        </a>
+        <a class="sponsor-logo" href="https://www.zaelot.com/" target="_blank" rel="noopener">
+          <img class="dark-logo" src="assets/sponsors/zaelot.svg" alt="Zaelot Logo">
         </a>
       </div>
     </div>

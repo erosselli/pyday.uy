@@ -74,6 +74,7 @@
       --sponsor-bg: transparent;
       --sponsor-white-logo-filter: invert(0);
       --sponsor-dark-logo-filter: brightness(0) invert(1);
+      --sponsor-dark-logo-with-white-filter: grayscale(100%) contrast(5000%) invert(1);
     }
 
     :root[data-theme="light"] {
@@ -93,6 +94,7 @@
       --focus: #1b4f9c;
       --sponsor-white-logo-filter: invert(1);
       --sponsor-dark-logo-filter: brightness(0) invert(0);
+      --sponsor-dark-logo-with-white-filter: grayscale(100%) contrast(5000%) invert(0);
     }
 
     * {
@@ -588,6 +590,10 @@
       filter: var(--sponsor-dark-logo-filter);
     }
 
+    .dark-logo-with-white {
+      filter: var(--sponsor-dark-logo-with-white-filter);
+    }
+
     /* ---------- footer ---------- */
 
     footer {
@@ -810,11 +816,20 @@
         <a class="sponsor-logo" href="https://xmartlabs.com/" target="_blank" rel="noopener">
           <img class="white-logo" src="assets/sponsors/xmartlabs.svg" alt="Xmartlabs Logo">
         </a>
-        <a class="sponsor-logo" href="https://https://focus.uy/" target="_blank" rel="noopener">
+        <a class="sponsor-logo" href="https://focus.uy/" target="_blank" rel="noopener">
           <img class="white-logo" src="assets/sponsors/focus.png" alt="Focus Logo">
         </a>
         <a class="sponsor-logo" href="https://www.zaelot.com/" target="_blank" rel="noopener">
           <img class="dark-logo" src="assets/sponsors/zaelot.svg" alt="Zaelot Logo">
+        </a>
+        <a class="sponsor-logo" href="https://djangonaut.space/" target="_blank" rel="noopener">
+          <img class="white-logo" src="assets/sponsors/djangonaut-space.svg" alt="Djangonaut Space Logo">
+        </a>
+        <!-- <a class="sponsor-logo" href="https://orangeloops.com/" target="_blank" rel="noopener">
+          <img class="dark-logo" src="assets/sponsors/orangeloops.png" alt="Orangeloops Logo">
+        </a> -->
+        <a class="sponsor-logo" href="https://sicfe.com.uy/" target="_blank" rel="noopener">
+          <img class="dark-logo-with-white" src="assets/sponsors/sicfe.png" alt="Sicfe Logo">
         </a>
       </div>
     </div>

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PyDay Uruguay — 10 de octubre, LATU</title>
   <link rel="icon" type="image/x-icon" href="assets/logo.png">
+  <script src="js/countdown.js" defer></script>
 
   <script>
     (function () {
@@ -431,6 +432,127 @@
       margin-top: 3px;
     }
 
+    /* ---------- tickets / countdown ---------- */
+
+    .tickets-panel {
+      position: relative;
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      padding: 32px;
+      margin-top: 24px;
+      background: var(--bg-raised);
+    }
+
+    .countdown-title {
+      font-family: 'Plex Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue);
+      margin: 0 0 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: left;
+    }
+
+    .countdown-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .countdown-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 16px 20px;
+      min-width: 96px;
+      transition: border-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .countdown-item:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .countdown-value {
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      transition: transform 0.15s ease, color 0.15s ease;
+    }
+
+    .countdown-value.tick-pulse {
+      animation: tickPulse 0.35s ease-out;
+    }
+
+    @keyframes tickPulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+        color: var(--gold-bright);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .countdown-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 8px;
+    }
+
+    .countdown-separator {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--blue);
+      margin-top: -18px;
+    }
+
+    @media (max-width: 580px) {
+      .tickets-panel {
+        padding: 20px 16px 24px;
+      }
+
+      .countdown-grid {
+        gap: 8px;
+      }
+
+      .countdown-item {
+        padding: 12px 8px;
+        min-width: 64px;
+        flex: 1;
+      }
+
+      .countdown-value {
+        font-size: 24px;
+      }
+
+      .countdown-label {
+        font-size: 10px;
+        margin-top: 6px;
+      }
+
+      .countdown-separator {
+        font-size: 20px;
+        margin-top: -14px;
+      }
+    }
+
     /* ---------- CFP ---------- */
 
     .cfp-panel {
@@ -753,6 +875,40 @@
       </div>
     </div>
   </header>
+
+  <section id="tickets">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>tickets.py</h2>
+      </div>
+      <p class="lede">Las entradas son gratuitas y con cupos limitados. La apertura de inscripciones será el 21 de
+        septiembre a las 12:00 hs.</p>
+      <div class="tickets-panel">
+        <div id="countdown" class="countdown-grid" role="timer" aria-live="polite"
+          aria-label="Cuenta regresiva para la apertura de tickets">
+          <div class="countdown-item">
+            <span class="countdown-value mono" id="cd-days">00</span>
+            <span class="countdown-label mono">días</span>
+          </div>
+          <div class="countdown-separator mono">:</div>
+          <div class="countdown-item">
+            <span class="countdown-value mono" id="cd-hours">00</span>
+            <span class="countdown-label mono">horas</span>
+          </div>
+          <div class="countdown-separator mono">:</div>
+          <div class="countdown-item">
+            <span class="countdown-value mono" id="cd-minutes">00</span>
+            <span class="countdown-label mono">minutos</span>
+          </div>
+          <div class="countdown-separator mono">:</div>
+          <div class="countdown-item">
+            <span class="countdown-value mono" id="cd-seconds">00</span>
+            <span class="countdown-label mono">segundos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="about">
     <div class="wrap">

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Código de Conducta — PyDay Uruguay</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="assets/logo.png">
+
+  <script>
+    (function () {
+      var saved = localStorage.getItem('pyday-theme');
+      if (saved === 'dark' || saved === 'light') {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    })();
+  </script>
+</head>
+
+<body>
+
+  <nav class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="PyDay UY Logo" />
+      <span>pyday<span style="color:var(--ink-soft)">.uy</span></span>
+    </a>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" role="switch" aria-checked="false"
+        aria-label="Cambiar tema">
+        <span class="track-icon icon-sun" aria-hidden="true">☀</span>
+        <span class="track-icon icon-moon" aria-hidden="true">☾</span>
+        <span class="thumb"></span>
+      </button>
+      <a class="cfp-link mono"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSfcn9E5Ts5lrqaylruZDrWQUb-33slaEt0W0gZzTvxEblPdQA/viewform"
+        target="_blank" rel="noopener">Enviar charla →</a>
+    </div>
+  </nav>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle');
+      if (!btn) return;
+      var STORAGE_KEY = 'pyday-theme';
+
+      function effectiveTheme() {
+        return root.getAttribute('data-theme') || 'dark';
+      }
+
+      function updateButton() {
+        var theme = effectiveTheme();
+        var isDark = theme === 'dark';
+        btn.classList.toggle('is-dark', isDark);
+        btn.setAttribute('aria-checked', isDark ? 'true' : 'false');
+        btn.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+      }
+
+      updateButton();
+
+      btn.addEventListener('click', function () {
+        var next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem(STORAGE_KEY, next);
+        updateButton();
+      });
+    })();
+  </script>
+
+  <main class="coc">
+    <div class="wrap">
+      <article class="coc-article">
+        <header class="coc-head">
+          <p class="eyebrow">coc.py</p>
+          <h1>PyDay UY Código de Conducta</h1>
+          <p class="coc-subtitle">(Adaptado del Código de Conducta de la PSF para la comunidad Python Uruguay)</p>
+        </header>
+
+        <p>PyDay UY es una conferencia comunitaria destinada a fomentar el intercambio y la colaboración dentro de la
+          comunidad Python.</p>
+        <p>Valoramos la participación de cada integrante de la comunidad Python y queremos que todas las personas
+          asistentes tengan una experiencia agradable y enriquecedora. En consecuencia, todo el equipo organizador,
+          asistentes, speakers, sponsors y cualquier persona voluntaria que participe en cualquier evento de PyDay UY
+          debe cumplir con el siguiente Código de Conducta.</p>
+
+        <section aria-labelledby="comunidad">
+          <h2 id="comunidad">Nuestra Comunidad</h2>
+          <p>Las personas que forman parte de la comunidad Python son abiertas, consideradas y respetuosas. Damos la
+            bienvenida a personas con distintas habilidades y niveles de experiencia, y nos regimos por los siguientes
+            valores:</p>
+          <ul>
+            <li>Colaboración abierta</li>
+            <li>Respetar distintos puntos de vista y experiencias.</li>
+            <li>Mostrar empatía hacia otras personas de la comunidad, tanto en espacios presenciales como en línea.</li>
+            <li>Aceptar con buena disposición las críticas constructivas, y mantener la cortesía cuando no estés de
+              acuerdo con ellas.</li>
+            <li>Usar un lenguaje inclusivo y acogedor, promoviendo un entorno en el que cualquier persona pueda
+              participar y todas puedan marcar la diferencia.</li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="normas">
+          <h2 id="normas">Nuestras Normas</h2>
+          <p>Cada integrante de nuestra comunidad tiene derecho a que su identidad sea respetada. La comunidad Python
+            Uruguay se compromete a brindar una experiencia positiva para todas las personas, independientemente de su
+            edad, identidad y expresión de género, orientación sexual, discapacidad, apariencia física, tamaño
+            corporal, etnia, nacionalidad, raza o religión (o la ausencia de ella), nivel educativo o situación
+            socioeconómica.</p>
+
+          <h3>Conductas inapropiadas</h3>
+          <p>Algunos ejemplos de comportamientos inaceptables por parte de participantes incluyen (pero no se limitan
+            a):</p>
+          <ul>
+            <li>Acoso hacia cualquier persona participante en cualquiera de sus formas, incluyendo intimidación
+              deliberada, acecho o seguimiento.</li>
+            <li>Publicar información privada de otra persona, como su dirección física o electrónica, sin su permiso
+              explícito.</li>
+            <li>Amenazas de violencia o lenguaje violento dirigido hacia otra persona.</li>
+            <li>Uso de lenguaje o imágenes de carácter sexual en espacios en línea o en cualquier ámbito de la
+              conferencia, incluyendo las charlas.</li>
+            <li>Insultos, descalificaciones o bromas basadas en estereotipos, que resulten excluyentes o que
+              ridiculicen a otras personas.</li>
+            <li>Atención, insinuaciones o contacto físico de carácter sexual no deseado y sin consentimiento.</li>
+            <li>Cualquier otra conducta inapropiada para un entorno profesional.</li>
+          </ul>
+          <p>Las personas de la comunidad a quienes se les solicite que cesen un comportamiento inapropiado deberán
+            hacerlo de inmediato.</p>
+        </section>
+
+        <section aria-labelledby="consecuencias">
+          <h2 id="consecuencias">Consecuencias</h2>
+          <p>Si una persona participante incurre en un comportamiento que infrinja este Código de Conducta, el equipo
+            Organizador de PyDay UY podrá tomar las medidas que considere apropiadas, incluyendo advertir a la persona
+            involucrada o expulsarla de la comunidad y de los eventos comunitarios.</p>
+        </section>
+
+        <section id="reportar" class="coc-report" aria-labelledby="reportar-titulo">
+          <h2 id="reportar-titulo">Reportar un incidente</h2>
+          <p>Para reportar un incidente o incumplimiento de este Código de Conducta, tenés que <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfGNMejq5bg8K7EXSE5rH7YlKIOpAKT2YnvwkD6lC7a0G3Kpw/viewform"
+              target="_blank" rel="noopener">rellenar nuestro formulario</a> y el equipo Organizador de PyDay UY se
+            pondrá en contacto contigo.</p>
+          <a class="cfp-cta mono"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfGNMejq5bg8K7EXSE5rH7YlKIOpAKT2YnvwkD6lC7a0G3Kpw/viewform"
+            target="_blank" rel="noopener">Ver el formulario <span class="arrow">→</span></a>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="brand mono">
+        <img src="assets/logo.png" alt="PyDay UY Logo" style="width:20px;height:20px" />
+        <span>PyDay Uruguay</span>
+      </div>
+      <div class="fine">
+        10 de octubre, 2026 · LATU, Montevideo<br>
+        <a href="codigo-de-conducta.html" aria-current="page">Código de Conducta</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

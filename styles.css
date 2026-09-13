@@ -137,6 +137,10 @@ nav.wrap {
     display: block;
 }
 
+a.brand {
+    text-decoration: none;
+}
+
 .nav-actions {
     display: flex;
     align-items: center;
@@ -689,6 +693,126 @@ h2 {
     filter: var(--sponsor-dark-logo-with-white-filter);
 }
 
+/* ---------- código de conducta ---------- */
+
+.coc {
+    border-top: 1px solid var(--line);
+    padding: 56px 0 80px;
+}
+
+.coc-article {
+    max-width: 70ch;
+}
+
+.coc-head {
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+}
+
+.coc h1 {
+    font-family: 'Plex Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(30px, 5vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+    text-wrap: balance;
+}
+
+.coc-subtitle {
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin: 0;
+}
+
+.coc p,
+.coc li {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.coc p {
+    margin: 0 0 16px;
+}
+
+/* sections inside the article: divider only, no full-width shell */
+.coc section {
+    padding: 32px 0 0;
+    margin-top: 32px;
+    border-top: 1px solid var(--line);
+    background: none;
+}
+
+.coc h2 {
+    margin: 0 0 16px;
+}
+
+.coc h2::before {
+    content: "# ";
+    color: var(--gold);
+}
+
+.coc h3 {
+    font-family: 'Plex Mono', monospace;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--blue);
+    margin: 28px 0 10px;
+}
+
+.coc ul {
+    margin: 0 0 20px;
+    padding-left: 1.5em;
+    list-style-type: "›  ";
+}
+
+.coc li {
+    margin-bottom: 8px;
+}
+
+.coc li::marker {
+    color: var(--gold);
+    font-family: 'Plex Mono', monospace;
+    font-weight: 700;
+}
+
+.coc p a {
+    color: var(--blue);
+    font-weight: 600;
+    text-underline-offset: 3px;
+}
+
+.coc p a:hover {
+    color: var(--blue-deep);
+}
+
+.coc .coc-report {
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    padding: 32px;
+    background: var(--bg-raised);
+}
+
+.coc .coc-report p {
+    margin-bottom: 22px;
+}
+
+@media (max-width: 580px) {
+    .coc {
+        padding: 40px 0 56px;
+    }
+
+    .coc p,
+    .coc li {
+        font-size: 16px;
+    }
+
+    .coc .coc-report {
+        padding: 24px 20px;
+    }
+}
+
 /* ---------- footer ---------- */
 
 footer {
@@ -713,6 +837,14 @@ footer .fine {
     font-size: 12px;
     color: var(--ink-soft);
     text-align: right;
+}
+
+footer .fine a {
+    text-underline-offset: 3px;
+}
+
+footer .fine a:hover {
+    color: var(--blue);
 }
 
 @media (max-width: 400px) {

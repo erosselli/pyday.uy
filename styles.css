@@ -87,6 +87,7 @@ body {
 
 a {
     color: inherit;
+    cursor: pointer;
 }
 
 ::selection {
@@ -530,6 +531,163 @@ h2 {
     }
 }
 
+/* ---------- schedule ---------- */
+
+.schedule-panel {
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 24px;
+    background: var(--bg-raised);
+}
+
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.schedule-item {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.schedule-item:hover {
+    border-color: var(--blue);
+}
+
+.schedule-item[open] {
+    border-color: var(--blue);
+    background: color-mix(in srgb, var(--bg-raised) 60%, var(--bg));
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.schedule-header {
+    display: grid;
+    grid-template-columns: 160px 1fr auto;
+    align-items: center;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    gap: 16px;
+}
+
+.schedule-header::-webkit-details-marker,
+.schedule-header::marker {
+    display: none;
+    content: "";
+}
+
+.schedule-time {
+    font-family: 'Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+:root[data-theme="light"] .schedule-time {
+    color: var(--blue);
+}
+
+.schedule-time::before {
+    content: "›";
+    color: var(--blue);
+    font-weight: 700;
+}
+
+.schedule-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.schedule-talk-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.35;
+}
+
+.schedule-speaker {
+    font-family: 'Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-soft);
+}
+
+.schedule-toggle-icon {
+    font-size: 11px;
+    color: var(--ink-soft);
+    transition: transform 0.25s ease, color 0.2s ease, background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--line) 60%, transparent);
+}
+
+.schedule-header:hover .schedule-toggle-icon {
+    color: var(--blue);
+    background: var(--line);
+}
+
+.schedule-item[open] .schedule-toggle-icon {
+    transform: rotate(180deg);
+    color: var(--gold);
+    background: color-mix(in srgb, var(--gold) 20%, transparent);
+}
+
+.schedule-description {
+    padding: 14px 20px 18px 196px;
+    border-top: 1px dashed var(--line);
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.schedule-description p {
+    margin: 0;
+}
+
+.schedule-muted {
+    font-weight: 400;
+    color: var(--ink-soft);
+}
+
+@media (max-width: 720px) {
+    .schedule-header {
+        grid-template-columns: 1fr auto;
+        gap: 8px 12px;
+    }
+
+    .schedule-time {
+        grid-column: 1 / -1;
+    }
+
+    .schedule-description {
+        padding: 14px 16px 16px 16px;
+    }
+}
+
+@media (max-width: 580px) {
+    .schedule-panel {
+        padding: 16px 10px;
+    }
+
+    .schedule-header {
+        padding: 14px 14px;
+    }
+}
+
 /* ---------- CFP ---------- */
 
 .cfp-panel {
@@ -691,6 +849,10 @@ h2 {
 
 .dark-logo-with-white {
     filter: var(--sponsor-dark-logo-with-white-filter);
+}
+
+#ort-logo {
+    max-width: 300px;
 }
 
 /* ---------- código de conducta ---------- */

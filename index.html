@@ -233,7 +233,7 @@
               <span class="schedule-time mono">16:00 - 16:45</span>
               <div class="schedule-info">
                 <span class="schedule-talk-title">Coffee Break</span>
-                <span class="schedule-speaker mono">[Espacio de Networking & Sponsors]</span>
+                <span class="schedule-speaker mono">Espacio de Networking & Sponsors</span>
               </div>
               <span class="schedule-toggle-icon" aria-hidden="true">▼</span>
             </summary>
@@ -253,6 +253,12 @@
             </summary>
             <div class="schedule-description">
               <p>Charlas relámpago de 10 minutos sobre proyectos, ideas, trucos o experiencias de la comunidad.</p>
+              <ul>
+                <li>5 cosas que podés automatizar hoy con Python si sos DevOps - Carolina Herrera</li>
+                <li>¿Tenés inversiones o tenés una estrategia? - Valeria Chulian </li>
+                <li>Aprender en tiempos de ruido - Riccardo Inojosa</li>
+                <li>Usando Python para analizar fútbol - Matías Bordese</li>
+              </ul>
             </div>
           </details>
 
@@ -260,15 +266,34 @@
             <summary class="schedule-header">
               <span class="schedule-time mono">17:55 - 18:25</span>
               <div class="schedule-info">
-                <span class="schedule-talk-title">Charla 4 <span class="schedule-muted">— [Insert title
-                    here]</span></span>
-                <span class="schedule-speaker mono">[Insert speaker here]</span>
+                <span class="schedule-talk-title">Soltar el GIL: qué pasa cuando Python llama a C</span>
+                <span class="schedule-speaker mono">Pablo Grill</span>
               </div>
               <span class="schedule-toggle-icon" aria-hidden="true">▼</span>
             </summary>
             <div class="schedule-description">
-              <p>Próximamente anunciaremos el título definitivo, el perfil del speaker y el resumen detallado de esta
-                presentación.</p>
+              <p>
+                Todos escuchamos que ""el GIL no deja usar varios cores"". Menos gente sabe que el GIL se puede
+                soltar, que NumPy lo hace todo el tiempo y que el lugar donde eso ocurre es el borde entre Python y C.
+              </p>
+              <p>
+                Esta charla es sobre ese borde. Primero, qué protege realmente el GIL y por qué existe. Después, cómo se
+                suelta y se recupera cuando llamás a código nativo. Y acá viene lo interesante: cada herramienta lo hace
+                de forma distinta.
+              </p>
+              <p>
+                ctypes lo suelta solo, sin que se lo pidas, salvo en un caso que existe justamente para no hacerlo.
+                Cython te obliga a marcar la región y detecta en compilación buena parte de lo que no es seguro.
+                pybind11 y nanobind te dejan pedirlo y confían en vos.
+              </p>
+              <p>
+                Porque hay un contrato: mientras el GIL está suelto, no podés usar la API de C de Python ni manipular
+                objetos de Python. Vamos a ver algunos ejemplos prácticos de cómo romper ese contrato.
+
+                Salís entendiendo qué es realmente el GIL, cómo se gestiona al llamar a C y por qué el free-threading no
+                hace desaparecer el problema: quitar el GIL elimina un mecanismo de sincronización, no la necesidad de
+                sincronizar.
+              </p>
             </div>
           </details>
 
@@ -276,15 +301,19 @@
             <summary class="schedule-header">
               <span class="schedule-time mono">18:30 - 19:00</span>
               <div class="schedule-info">
-                <span class="schedule-talk-title">Charla 5 <span class="schedule-muted">— [Insert title
-                    here]</span></span>
-                <span class="schedule-speaker mono">[Insert speaker here]</span>
+                <span class="schedule-talk-title">Construye Tu Propio Context Harness en Python: Portabilidad de
+                  Contexto Entre IDEs</span>
+                <span class="schedule-speaker mono">Hazel Saenz</span>
               </div>
               <span class="schedule-toggle-icon" aria-hidden="true">▼</span>
             </summary>
             <div class="schedule-description">
-              <p>Próximamente anunciaremos el título definitivo, el perfil del speaker y el resumen detallado de esta
-                presentación.</p>
+              <p>Usas Cursor para iterar rápido, Claude Code para refactoring en terminal, Kiro para estructurar con
+                specs, pero cada vez que cambias de IDE la IA te pregunta todo de nuevo porque tu contexto se queda
+                atrapado en una sola herramienta. En esta charla construimos juntos un Context Harness en Python: un CLI
+                que ingesta errores y diffs de tu proyecto, orquesta ese contexto con un modelo local o en la nube, lo
+                reduce entre 44-96%, y genera un bundle portable que cualquier IDE puede consumir. Capa por capa, vas a
+                entender cómo armarlo para tu propio flujo de trabajo.</p>
             </div>
           </details>
 
